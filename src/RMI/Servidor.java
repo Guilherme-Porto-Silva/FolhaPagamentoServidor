@@ -22,9 +22,9 @@ public class Servidor {
 
 //            conexao.bind("calculadora", servicoCalculadora);
 
-            System.out.println("Servidor iniciado.");
-
 //            conexao.bind("chaveProduto", servicoProduto);
+
+            System.out.println("Servidor iniciado.");
         }
 
         catch (RemoteException e) {
