@@ -16,17 +16,45 @@ public class Cargo implements Serializable {
 
 
 
-    public Cargo (NomeCargo nomeCargo, double salarioCargo, Departamento departamentoCargo, String horarioChegadaCargo, String horarioSaidaCargo) {
+    public Cargo (NomeCargo nomeCargo) {
 
         nome = nomeCargo;
-        
-        salario = salarioCargo;
-        
-        departamento = departamentoCargo;
-        
-        horarioChegada = horarioChegadaCargo;
-        
-        horarioSaida = horarioSaidaCargo;
+
+        switch (nomeCargo) {
+
+            case NomeCargo.Gerente -> {
+
+                salario = 3660.00;
+
+                horarioChegada = "10:00";
+
+                horarioSaida = "18:00";
+
+                departamento = new Departamento(Departamentos.Administrativo);
+            }
+
+            case NomeCargo.Coordenador -> {
+
+                salario = 1830.00;
+
+                horarioChegada = "09:00";
+
+                horarioSaida = "18:00";
+
+                departamento = new Departamento(Departamentos.Administrativo);
+            }
+
+            case NomeCargo.Professora -> {
+
+                salario = 1189.50;
+
+                horarioChegada = "07:00";
+
+                horarioSaida = "18:00";
+
+                departamento = new Departamento(Departamentos.Operacional);
+            }
+        }
     }
 
 

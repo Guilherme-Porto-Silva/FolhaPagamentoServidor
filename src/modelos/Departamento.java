@@ -2,9 +2,14 @@ package modelos;
 
 import java.io.Serializable;
 
-public enum Departamento implements Serializable {
+public class Departamento implements Serializable {
 
-    TI,
-    Operações,
-    Educação;
+    private int id;
+
+    private String nome;
+
+    public Departamento (Departamentos departamento) {
+
+        nome = departamento.toString();
+    }
 }

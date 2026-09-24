@@ -19,11 +19,11 @@ public class Funcionario implements Serializable {
         cargo = cargoFuncionario;
     }
 
-    public Funcionario (String nomeFuncionario, NomeCargo nomeCargo, double salarioFuncionario, Departamento departamentoFuncionario, String horarioChegadaFuncionario, String horarioSaidaFuncionario) {
+    public Funcionario (String nomeFuncionario, NomeCargo cargoFuncionario) {
 
         nome = nomeFuncionario;
 
-        cargo = new Cargo(nomeCargo, salarioFuncionario, departamentoFuncionario, horarioChegadaFuncionario, horarioSaidaFuncionario);
+        cargo = new Cargo(cargoFuncionario);
     }
 
 
