@@ -1,4 +1,4 @@
-package modelos;
+package componentes;
 
 public enum Departamentos {
 

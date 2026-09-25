@@ -9,14 +9,16 @@ public class Conexao {
 
     public void conectar () {
 
+        String forName = "com.mysql.cj.jdbc.Driver";
+        
         try {
-            Class.forName(System.getenv("RMI_CLASS_NAME"));
+            Class.forName(forName);
 
             String url = System.getenv("RMI_URL");
 
-            String usuario = System.getenv("RMI_USER");
+            String usuario = System.getenv("DB_USER");
 
-            String senha = System.getenv("RMI_PASSWORD");
+            String senha = System.getenv("DB_PASSWORD");
 
             link = DriverManager.getConnection(url, usuario, senha);
         }
@@ -24,7 +26,7 @@ public class Conexao {
         catch (Exception variaveisAmbienteNaoDeclaradas) {
 
             try {
-                Class.forName("com.mysql.cj.jdbc.Driver");
+                Class.forName(forName);
 
                 String url = "jdbc:mysql://localhost/rmi_guigui_chan";
 

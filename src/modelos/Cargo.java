@@ -1,5 +1,9 @@
 package modelos;
 
+import componentes.Departamento;
+import componentes.Departamentos;
+import componentes.NomeCargo;
+
 import java.io.Serializable;
 
 public class Cargo implements Serializable {

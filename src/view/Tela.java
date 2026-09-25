@@ -1,52 +1,114 @@
 package view;
 
-import modelos.ModeloTabela;
-import modelos.NomeCargo;
+import componentes.ModeloTabela;
+import componentes.NomeCargo;
 
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Tela extends JFrame {
 
-    public Tela () {
+    private final Scanner scanf = new Scanner(System.in);
+
+
+
+    public Tela (
+
+            List<String> nomes, List<NomeCargo> cargos, double aliquota,
+
+            int largura, int altura, Component localizacaoRelativaA,
+
+            boolean cobrirAlturaVisao, int alturaLinha,
+
+            String fonte, int tamanhoLetras, String borda
+
+    ) {
 
         setTitle("Folha de pagamento");
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        setSize(1000, 400);
+        setSize(largura, altura);
 
-        setLocationRelativeTo(null);
+        setLocationRelativeTo(localizacaoRelativaA);
 
         List<Linha> linhas = new ArrayList<>();
 
-        linhas.add(new Linha("Clayton", NomeCargo.Gerente, 8.5));
+        var quantasLinhas = nomes.size();
 
-        linhas.add(new Linha("João", NomeCargo.Coordenador, 8.5));
+        for (int i = 0; i < quantasLinhas; i++) {
 
-        linhas.add(new Linha("Julia", NomeCargo.Professora, 8.5));
+            Linha linha = new Linha(nomes.get(i), cargos.get(i), aliquota);
+
+            linhas.add(linha);
+        }
 
         ModeloTabela modeloTabela = new ModeloTabela(linhas);
 
         JTable tabela = new JTable(modeloTabela);
         
-        tabela.setFillsViewportHeight(true);
+        tabela.setFillsViewportHeight(cobrirAlturaVisao);
 
-        tabela.setRowHeight(25);
+        tabela.setRowHeight(alturaLinha);
 
         tabela.getTableHeader().setReorderingAllowed(false); // Impede embaralhamento visual das linhas.
 
-        tabela.getTableHeader().setFont(new Font("SansSerif", Font.BOLD, 12));
+        tabela.getTableHeader().setFont(new Font(fonte, Font.BOLD, tamanhoLetras));
 
         JScrollPane scrollPane = new JScrollPane(tabela);
 
-        add(scrollPane, BorderLayout.CENTER);
+        add(scrollPane, borda);
+
+        this.setVisible(true);
     }
 
-    public static void main (String[] args) {
 
-        SwingUtilities.invokeLater(() -> { new Tela().setVisible(true); });
+
+    public Tela criarTelaPadrao (int quantasLinhas) {
+
+        List<String> nomes = new LinkedList<>();
+
+        List<NomeCargo> cargos = new LinkedList<>();
+
+        for (int i = 0; i < quantasLinhas; i++) {
+
+            System.out.print("\n\nDigite um nome de funcionário: ");
+
+            String nome = scanf.nextLine().strip().replace("  ", " ");
+
+            nomes.add(nome);
+
+            System.out.print(nome + """
+                     pode assumir os cargos os cargos:
+                     
+                     1 - Gerente
+                     
+                     2 - Coordenador
+                     
+                     3 - Professora
+                     
+                     Digite um desses índices: """);
+
+            var indiceCargo = Integer.parseInt(scanf.nextLine().strip());
+
+            switch (indiceCargo) {
+
+                case 1 -> cargos.add(NomeCargo.Gerente);
+
+                case 2 -> cargos.add(NomeCargo.Coordenador);
+
+                case 3 -> cargos.add(NomeCargo.Professora);
+            }
+        }
+
+        System.out.println("Digite a alíquota do imposto: ");
+
+        double aliquota = Double.parseDouble(scanf.nextLine().strip());
+
+        return new Tela(nomes, cargos, aliquota, 1000, 400, null, true, 25, "SansSerif", 12, BorderLayout.CENTER);
     }
 }

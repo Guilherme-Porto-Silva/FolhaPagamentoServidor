@@ -38,4 +38,30 @@ public class Pagamento implements Serializable {
 
         return pagamentoPratico;
     }
+
+    public Object get (int coluna) {
+
+        switch (coluna) {
+
+            case 7 -> {
+                return salarioReceptor;
+            }
+
+            case 8 -> {
+                return aliquotaUtilizada;
+            }
+
+            case 9 -> {
+                return impostoCobrado;
+            }
+
+            case 10 -> {
+                return pagamentoPratico;
+            }
+
+            default -> {
+                return "Nossa tabela não tem " + coluna + " colunas.";
+            }
+        }
+    }
 }

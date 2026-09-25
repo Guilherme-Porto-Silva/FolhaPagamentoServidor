@@ -10,19 +10,21 @@ public class Servidor {
     public static void main (String[] args) {
 
         try{
-            Registry conexao = LocateRegistry.createRegistry(1500);
+            Registry conexao =
 
-//            Interface servico = new ImplementacaoInterface();
+LocateRegistry.createRegistry(1500);// Serviço de nomes onde o servidor regista os objetos remotos e o cliente pesquisa a sua localização.
 
-//            InterfaceCalculadora servicoCalculadora = new Calculadora();
+//            InterfaceCargo servicoCargo = new ServicoCargo();
 
-//            InterfaceProduto servicoProduto = new ImplementacaoInterfaceProduto();
+//            InterfaceFuncionario servicoFuncionario = new ServicoFuncionario();
 
-//            conexao.bind("chave", servico);
+//            InterfacePagamento servicoPagamento = new ServicoPagamento();
 
-//            conexao.bind("calculadora", servicoCalculadora);
+//            conexao.bind("chave", servicoCargo);
 
-//            conexao.bind("chaveProduto", servicoProduto);
+//            conexao.bind("chave", servicoFuncionario);
+
+//            conexao.bind("chave", servicoPagamento);
 
             System.out.println("Servidor iniciado.");
         }
