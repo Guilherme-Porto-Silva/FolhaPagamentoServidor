@@ -140,5 +140,7 @@ A interface gráfica do cliente para interação com este servidor pode ser enco
 
 ## 👥 Autores
 
-* **Giovana Silva Manço**
+
 * **Guilherme Porto e Silva**
+* **Fillip Will de Oliveira Amaral**
+* **Giovana Silva Manço**
