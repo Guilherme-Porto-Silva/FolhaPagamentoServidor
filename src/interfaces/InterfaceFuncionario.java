@@ -1,4 +1,6 @@
 package interfaces;
 
-public interface InterfaceFuncionario {
+import java.rmi.Remote;
+
+public interface InterfaceFuncionario extends Remote {
 }

@@ -1,4 +1,6 @@
 package interfaces;
 
-public interface InterfacePagamento {
+import java.rmi.Remote;
+
+public interface InterfacePagamento extends Remote {
 }

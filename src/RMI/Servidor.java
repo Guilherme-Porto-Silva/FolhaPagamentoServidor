@@ -1,6 +1,11 @@
 package RMI;
 
+import implementadores.ServicoFuncionario;
+import implementadores.ServicoPagamento;
+import interfaces.InterfaceFuncionario;
+import interfaces.InterfacePagamento;
 import java.rmi.AlreadyBoundException;
+import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
@@ -10,21 +15,29 @@ public class Servidor {
     public static void main (String[] args) {
 
         try{
-            Registry conexao =
+            // Serviço de nomes onde o servidor regista os objetos remotos e o cliente pesquisa a sua localização.
+            Registry listaTelefonica = LocateRegistry.createRegistry(1500);
 
-LocateRegistry.createRegistry(1500);// Serviço de nomes onde o servidor regista os objetos remotos e o cliente pesquisa a sua localização.
+            InterfaceFuncionario servicoFuncionario = new ServicoFuncionario();
 
-//            InterfaceCargo servicoCargo = new ServicoCargo();
+            InterfacePagamento servicoPagamento = new ServicoPagamento();
 
-//            InterfaceFuncionario servicoFuncionario = new ServicoFuncionario();
+            try{
+                String numeroServicoFuncionario = System.getenv("FUNCIONARIO_RMI");
+                        
+                listaTelefonica.bind(numeroServicoFuncionario, (Remote) servicoFuncionario);
 
-//            InterfacePagamento servicoPagamento = new ServicoPagamento();
+                String numeroServicoPagamento = System.getenv("PAGAMENTO_RMI");
 
-//            conexao.bind("chave", servicoCargo);
+                listaTelefonica.bind(numeroServicoPagamento, (Remote) servicoPagamento);
+            }
+            
+            catch (NullPointerException e) {
 
-//            conexao.bind("chave", servicoFuncionario);
+                listaTelefonica.bind("numeroServicoFuncionario", (Remote) servicoFuncionario);
 
-//            conexao.bind("chave", servicoPagamento);
+                listaTelefonica.bind("numeroServicoFuncionario", (Remote) servicoPagamento);
+            }
 
             System.out.println("Servidor iniciado.");
         }
@@ -36,7 +49,7 @@ LocateRegistry.createRegistry(1500);// Serviço de nomes onde o servidor regista
 
         catch (AlreadyBoundException e) {
 
-            System.out.println("Erro na chamada do Serviço: " + e.getMessage());
+            System.out.println("O serviço já estava conectado.");
         }
     }
 }
