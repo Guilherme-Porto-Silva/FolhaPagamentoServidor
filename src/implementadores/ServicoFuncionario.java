@@ -20,7 +20,7 @@ public class ServicoFuncionario extends UnicastRemoteObject implements Interface
 
     private final String SQL_DEMICAO_JUSTIFICATIVA = "insert into Demissoes (funcionario_demitido, razao_demissao) values (?, ?)";
 
-    private final String SQL_ACHAR_FUNCIONARIO = "select from Funcionario where Funcionario.id = ?";
+    private final String SQL_ACHAR_FUNCIONARIO = "select nome from Funcionario where Funcionario.id = ?";
 
     private boolean cadastrarCargo () {
 
