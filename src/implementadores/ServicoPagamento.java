@@ -2,6 +2,8 @@ package implementadores;
 
 import RMI.Conexao;
 import interfaces.InterfacePagamento;
+import modelos.Funcionario;
+
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.sql.PreparedStatement;
@@ -12,7 +14,11 @@ public class ServicoPagamento extends UnicastRemoteObject implements InterfacePa
 
     private final Conexao LINK = new Conexao();
 
+    private final ServicoFuncionario SERVICO_FUNCIONARIO = new ServicoFuncionario();
+
     private final String SQL_ACHAR_PAGAMENTO_FUNCIONARIO = "select pagamento from Funcionario where Funcionario.id = ?";
+
+
 
     @Override public double consultarPagamento (int funcionarioID) {
 
@@ -40,5 +46,12 @@ public class ServicoPagamento extends UnicastRemoteObject implements InterfacePa
         }
 
         return pagamento;
+    }
+
+
+
+    @Override public void calcularEfetuarPagamento (int funcionarioID, String mesAno) {
+
+        Funcionario pago = SERVICO_FUNCIONARIO.acharFuncionario(funcionarioID);
     }
 }

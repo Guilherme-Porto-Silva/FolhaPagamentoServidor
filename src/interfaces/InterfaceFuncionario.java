@@ -1,18 +1,17 @@
 package interfaces;
 
 import java.rmi.Remote;
+import java.util.List;
 
 public interface InterfaceFuncionario extends Remote {
 
-    boolean cadastrarFuncionario();
+    boolean cadastrarFuncionario(String nome, String cpf, int cargoID);
 
     boolean demitirFuncionario(int funcionarioID, String justificativa);
 
-    void listarFuncionarios();
+    List<String> listarFuncionarios();
 
-    boolean cadastrarCargo();
+    boolean inserirCargo(String nome, double salario, int departamentoID);
 
-    boolean removerCargo(int cargoID);
-
-    void listarCargos();
+    boolean inserirDepartamento(String nome);
 }

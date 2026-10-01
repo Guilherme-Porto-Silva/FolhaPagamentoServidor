@@ -37,13 +37,8 @@ src/
 │   ├── ServicoFuncionario.java  # Implementação remota da gestão de funcionários
 │   └── ServicoPagamento.java    # Implementação remota de pagamentos
 ├── modelos/
-│   ├── Funcionario.java         # Entidade Funcionario (Serializable)
-│   ├── Cargo.java               # Entidade Cargo (Serializable)
-│   └── Pagamento.java           # Entidade Pagamento (Serializable)
-└── componentes/
-    ├── Departamento.java        # Entidade Departamento (Serializable)
-    ├── Departamentos.java       # Enum de Departamentos
-    └── NomeCargo.java          # Enum de Cargos
+    ├── Funcionario.java         # Entidade Funcionario (Serializable)
+    └── Pagamento.java           # Entidade Pagamento (Serializable)
 ```
 
 ---
@@ -72,15 +67,13 @@ USE rmi_guigui_chan;
 CREATE TABLE Cargo (
     id INT PRIMARY KEY AUTO_INCREMENT,
     salario FLOAT DEFAULT 1675,
-    departamento VARCHAR(10) NOT NULL,
-    horario_chegada VARCHAR(5) NOT NULL,
-    horario_saida VARCHAR(5) NOT NULL
+    departamento int NOT NULL
 );
 
 CREATE TABLE Funcionario (
     id INT PRIMARY KEY AUTO_INCREMENT,
     nome VARCHAR(25) NOT NULL,
-    cargo INT NOT NULL,
+    cpf VARCHAR(14) NOT NULL,
     CONSTRAINT cargo_do_funcionario FOREIGN KEY (cargo) REFERENCES Cargo(id)
 );
 

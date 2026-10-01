@@ -1,8 +1,5 @@
 package modelos;
 
-import componentes.Departamento;
-import componentes.NomeCargo;
-
 import java.io.Serializable;
 
 public class Funcionario implements Serializable {
@@ -22,14 +19,10 @@ public class Funcionario implements Serializable {
         cargo = cargoFuncionario;
     }
 
-    public Funcionario (String nomeFuncionario, NomeCargo cargoFuncionario) {
+    @Override public String toString () {
 
-        nome = nomeFuncionario;
-
-        cargo = new Cargo(cargoFuncionario);
+        return "Funcionario " + nome + " - Cargo " + cargo.getNome();
     }
-
-
 
     public int getId() {
 
@@ -51,20 +44,7 @@ public class Funcionario implements Serializable {
         return cargo.getSalario();
     }
 
-    public Departamento getDepartamento() {
 
-        return cargo.getDepartamento();
-    }
-
-    public String getHorarioChegada() {
-
-        return cargo.getHorarioChegada();
-    }
-
-    public String getHorarioSaida() {
-
-        return cargo.getHorarioSaida();
-    }
 
     public Object get (int coluna) {
 
@@ -80,18 +60,6 @@ public class Funcionario implements Serializable {
 
             case 3 -> {
                 return getSalario();
-            }
-
-            case 4 -> {
-                return getDepartamento();
-            }
-
-            case 5 -> {
-                return getHorarioChegada();
-            }
-
-            case 6 -> {
-                return getHorarioSaida();
             }
 
             default -> {
