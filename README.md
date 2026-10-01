@@ -14,7 +14,7 @@ Este repositório contém a aplicação **Servidor** desenvolvida para o sistema
 
 ## 🚀 Tecnologias Utilizadas
 
-* **Linguagem:** Java 25
+* **Linguagem:** Java 24+
 * **Tecnologia de Comunicação Remota:** Java RMI (`java.rmi`)
 * **Banco de Dados:** MySQL
 * **Conectividade:** JDBC (`com.mysql.cj.jdbc.Driver`)
