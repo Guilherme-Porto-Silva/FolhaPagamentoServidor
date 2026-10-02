@@ -36,7 +36,7 @@ public class Servidor {
 
                 listaTelefonica.bind("numeroServicoFuncionario", (Remote) servicoFuncionario);
 
-                listaTelefonica.bind("numeroServicoFuncionario", (Remote) servicoPagamento);
+                listaTelefonica.bind("numeroServicoPagamento", (Remote) servicoPagamento);
             }
 
             System.out.println("Servidor iniciado.");
