@@ -3,7 +3,6 @@ package implementadores;
 import RMI.Conexao;
 import interfaces.InterfacePagamento;
 import modelos.Pagamento;
-
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.sql.Connection;
@@ -33,7 +32,7 @@ public class ServicoPagamento extends UnicastRemoteObject implements InterfacePa
 
 
 
-    @Override public double consultarPagamento (int funcionarioID) {
+    @Override public double consultarPagamento (int funcionarioID) throws RemoteException {
 
         double pagamento;
 
@@ -80,7 +79,7 @@ public class ServicoPagamento extends UnicastRemoteObject implements InterfacePa
 
 
 
-    @Override public void calcularEfetuarPagamento (int funcionarioID, String mesAno) {
+    @Override public void calcularEfetuarPagamento (int funcionarioID, String mesAno) throws RemoteException {
 
         // 1. Valida o mês/ano (formato MM/aaaa).
         try {

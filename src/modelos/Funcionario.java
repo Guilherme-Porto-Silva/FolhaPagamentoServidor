@@ -8,20 +8,16 @@ public class Funcionario implements Serializable {
 
     private String nome;
 
-    private Cargo cargo;
 
 
-
-    public Funcionario (String nomeFuncionario, Cargo cargoFuncionario) {
+    public Funcionario (String nomeFuncionario) {
 
         nome = nomeFuncionario;
-
-        cargo = cargoFuncionario;
     }
 
     @Override public String toString () {
 
-        return "Funcionario " + nome + " - Cargo " + cargo.getNome();
+        return "Funcionario " + nome;
     }
 
     public int getId() {
@@ -32,16 +28,6 @@ public class Funcionario implements Serializable {
     public String getNome() {
 
         return nome;
-    }
-
-    public Cargo getCargo() {
-
-        return cargo;
-    }
-
-    public double getSalario() {
-
-        return cargo.getSalario();
     }
 
 
@@ -56,10 +42,6 @@ public class Funcionario implements Serializable {
 
             case 2 -> {
                 return nome;
-            }
-
-            case 3 -> {
-                return getSalario();
             }
 
             default -> {

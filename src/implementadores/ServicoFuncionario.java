@@ -2,14 +2,10 @@ package implementadores;
 
 import RMI.Conexao;
 import interfaces.InterfaceFuncionario;
-import modelos.Cargo;
-import modelos.Departamento;
 import modelos.Funcionario;
-
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.sql.PreparedStatement;
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -35,7 +31,7 @@ public class ServicoFuncionario extends UnicastRemoteObject implements Interface
 
 
 
-    @Override public boolean cadastrarFuncionario (String nome, String cpf, int cargoID) {
+    @Override public boolean cadastrarFuncionario (String nome, String cpf, int cargoID) throws RemoteException {
 
         boolean deuCerto;
 
@@ -67,7 +63,7 @@ public class ServicoFuncionario extends UnicastRemoteObject implements Interface
 
 
 
-    @Override public boolean demitirFuncionario (int funcionarioID, String justificativa) {
+    @Override public boolean demitirFuncionario (int funcionarioID, String justificativa) throws RemoteException {
 
         boolean deuCerto;
 
@@ -105,7 +101,7 @@ public class ServicoFuncionario extends UnicastRemoteObject implements Interface
 
 
 
-    public Funcionario acharFuncionario (int funcionarioID) {
+    public Funcionario acharFuncionario (int funcionarioID) throws RemoteException {
 
         Funcionario procurado;
 
@@ -131,7 +127,7 @@ public class ServicoFuncionario extends UnicastRemoteObject implements Interface
 
 
 
-    @Override public List<String> listarFuncionarios () {
+    @Override public List<String> listarFuncionarios () throws RemoteException {
 
         List<String> lista = new LinkedList<>();
 
@@ -159,7 +155,7 @@ public class ServicoFuncionario extends UnicastRemoteObject implements Interface
 
 
 
-    @Override public boolean inserirCargo (String nome, double salario, int departamentoID) {
+    @Override public boolean inserirCargo (String nome, double salario, int departamentoID) throws RemoteException {
 
         boolean deuCerto;
 
@@ -191,7 +187,7 @@ public class ServicoFuncionario extends UnicastRemoteObject implements Interface
 
 
 
-    @Override public boolean inserirDepartamento (String nome) {
+    @Override public boolean inserirDepartamento (String nome) throws RemoteException {
 
         boolean deuCerto;
 
